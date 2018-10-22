@@ -1,0 +1,149 @@
+GET medic "http://example.com/api/v2/medics/:medic_id/messages" //collegamento ai link dei messaggi
+GET patient "http://example.com/api/v2/patients/:patient_id/messages" //collegamento ai link dei messaggi
+
+//esempio get precedente per un medico
+[
+    {
+        "href": "http://example.com/api/v2/medics/:medic_id/messagges/sent", //link ai messaggi inviati dal medico
+        "rel": "medic/messages/sent",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/medics/:medic_id/messagges/received", //link ai messaggi ricevuti dal medico
+        "rel": "medic/messages/received",
+        "type": "GET"
+    }
+]
+
+//esempio get precedente per una paziente
+[
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/messagges/sent", //link ai messaggi inviati dalla paziente
+        "rel": "patient/messages/sent",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/messagges/received", //link ai messaggi ricevuti dalla paziente
+        "rel": "patient/messages/received",
+        "type": "GET"
+    }
+]
+
+
+
+GET medic "http://example.com/api/v2/medics/:medic_id/messages/sent" // Tutti i messaggi inviati di un medico
+GET medic "http://example.com/api/v2/medics/:medic_id/messages/received" // Tutti i messaggi inviati di un medico
+    parametri:  patient_id = :patient_id // Filtro per paziente
+                (date = :date) oppure (startdate = :startdate enddate = :enddate) // Filtro per data oppure per un'intervallo di date //FORSE TOGLIERE
+
+//esempio messaggi per il medico
+{
+    "messages": [
+        {
+            "patient_id": 1,
+            "medic_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "text": "text message",
+            "link": {
+                "href": "http://example.com/api/v2/medics/:medic_id/messages/sent|received?timedate=:timedate&patient_id=:patient_id", //link al singolo messaggio
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        {
+            "patient_id": 2,
+            "medic_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "text": "text message",
+            "link": {
+                "href": "http://example.com/api/v2/medics/:medic_id/messages/sent|received?timedate=:timedate&patient_id=:patient_id", //link al singolo messaggio
+                "rel": "medic/messages/sent|received/message",
+                "type": "GET"
+            }
+        },
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/messages/sent|received", //link ai messaggi ricevuti se già mostrati quelli inviati oppure ai messaggi inviati se mostrati quelli ricevuti
+            "rel": "medic/messages/sent|received",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/messages", //aggiunta di un nuovo messaggio per il medico
+            "rel": "medic/messages",
+            "type": "POST"
+        }
+    ]
+}
+
+
+
+GET patient "http://example.com/api/v2/patients/patient_id/messages/sent" // Tutti i messaggi inviati del paziente
+GET patient "http://example.com/api/v2/patients/patient_id/messages/received" //Tutti i messaggi ricevuti del paziente
+    parametri:  medic_id = :medic_id // Filtro per medico
+                (date = :date) oppure (startdate = :startdate enddate = :enddate) // Filtro per data oppure per un'intervallo di date //FORSE TOGLIERE
+
+//esempio messaggi per il medico
+{
+    "messages": [
+        {
+            "patient_id": 1,
+            "medic_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "text": "text message",
+            "link": {
+                "href": "http://example.com/api/v2/patients/:patient_id/messages/sent|received?timedate=:timedate&medic_id=:medic_id", //link al singolo messaggio
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        {
+            "patient_id": 1,
+            "medic_id": 2,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "text": "text message",
+            "link": {
+                "href": "http://example.com/api/v2/patients/:patient_id/messages/sent|received?timedate=:timedate&medic_id=:medic_id", //link al singolo messaggio
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/messages/sent|received", //link ai messaggi ricevuti se già mostrati quelli inviati oppure ai messaggi inviati se mostrati quelli ricevuti
+            "rel": "patient/messages/sent|received",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/messages", //link per l'aggiunta di un nuovo messaggio per la paziente
+            "rel": "patient/messages",
+            "type": "POST"
+        }
+    ]
+}
+
+POST medic "http://example.com/api/v2/medics/:medic_id/messages" //Invio di un nuovo messaggio per 
+POST patient "http://example.com/api/v2/patients/:patient_id/messages"
+
+//esempio creazione di un nuovo messaggio per il medico
+{
+    "patient_id": 1,
+    "timedate": "YYYY-MM-DD HH:mm:SS",
+    "text": "test"
+}
+
+//esempio creazione di un nuovo messaggio per la paziente
+{
+    "medic_id": 1,
+    "timedate": "YYYY-MM-DD HH:mm:SS",
+    "text": "test"
+}

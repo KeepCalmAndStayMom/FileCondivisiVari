@@ -1,0 +1,56 @@
+GET paziente"http://example.com/api/v2/patients/:patient_id/login_data" //Dati login della paziente
+
+{
+    "email": "test@test.it",
+    "password": "test",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati della paziente
+            "rel": "patient",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/login_data", //link per la modifica dei dati di login della paziente
+            "rel": "self",
+            "type": "PUT"
+        }
+    ]
+}
+
+
+GET medico "http://example.com/api/v2/medics/:medic_id/login_data" //Dati login del medico
+
+{
+    "email": "test@test.it",
+    "password": "test",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id", //link ai dati del medico
+            "rel": "medic",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/login_data", //link per la modifica dei dati di login del medico
+            "rel": "self",
+            "type": "PUT"
+        }
+    ]
+}
+
+POST admin "http://example.com/api/v2/medics/:medic_id/login_data" //aggiunta nuovo dato login del medico nel database
+POST admin "http://example.com/api/v2/patients/:patient_id/login_data" //aggiunta nuovo dato login della paziente nel database 
+
+//esempio aggiunta dati login nel database
+{
+    "email": "test@test.com",
+    "password": "test"
+}
+
+PUT medico "http://example.com/api/v2/medics/:medic_id/login_data" //modifica dati login del medico
+PUT paziente "http://example.com/api/v2/patients/:patient_id/login_data" //modifica dati login della paziente
+
+//Dati da inserire nel body
+{
+    "email": "test@test.com",
+    "password": "test"
+}

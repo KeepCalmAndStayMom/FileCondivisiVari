@@ -1,0 +1,145 @@
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/samples" // Get di tutti i campionamenti dei contatori delle Hue
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples", //link ai campionamenti del fitbit
+            "rel": "homestation/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples", //link ai campionamenti del sensore
+            "rel": "homestation/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?date=:date" // Get di tutti i campionamenti dei contatori delle hue in una determinata data
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?date=:date", //link ai campionamenti del fitbit filtrati per data
+            "rel": "homestation/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples?date=:date", //link ai campionamenti del sensore filtrati per data
+            "rel": "homestation/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?startdate=:startdate&enddate=:enddate" // Get di tutti i campionamenti dei contatori delle hue in un intervallo di date
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "chromotherapy": "test"
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?startdate=:startdate&enddate=:enddate", //link ai campionamenti del fitbit filtrati per un intervallo di date
+            "rel": "homestation/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples?startdate=:startdate&enddate=:enddate", //link ai campionamenti del sensore filtrati per un intervallo di date
+            "rel": "homestation/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*****************************************************************************************************************************************************************************/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/total?date=:date" // Totale contatori hue in una determinata data
+
+{
+    "total": {
+        "totalcromosoft": 25,
+        "totalcromohard": 46
+    },
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/total?date=:date", //link al totale del fitbit in una specifica data
+            "rel": "homestation/measures/fitbit/total",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/total?date=:date", //link al totale del sensore in una specifica data
+            "rel": "homestation/measures/sensor/total",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/total?startdate=:stardate&enddate=:enddate" // Totale contatori hue in un intervallo di tempo
+
+{
+    "total": {
+        "totalcromosoft": 25,
+        "totalcromohard": 46
+    },
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/total?startdate=:stardate&enddate=:enddate", //link al totale del fitbit in un intervallo di date
+            "rel": "homestation/measures/fitbit/total",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/total?startdate=:stardate&enddate=:enddate", //link al totale del fitbit in un intervallo di date
+            "rel": "homestation/measures/sensor/total",
+            "type": "GET"
+        }
+    ]
+}

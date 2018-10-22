@@ -1,0 +1,177 @@
+GET "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples" // Get di tutti i campionamenti del fitbit
+
+{
+    "measures": [
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples", //link ai campionamenti delle hue
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples", //link ai campionamenti del sensore
+            "rel": "patient/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?date=:date" // Get di tutti i campionamenti del fitibit in una determinata data
+
+{
+    "measures": [
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?date=:date", //link ai campionamenti delle hue filtrati per data
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples?date=:date", //link ai campionamenti del sensore filtrati per data
+            "rel": "patient/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?startdate=:stardate&enddate=:enddate" // Get di tutti i campionamenti del fitbit in un intervallo di date
+
+{
+    "measures": [
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        {
+            "patient_id": 1,
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "avg_heartbeats": 80,
+            "calories": 200,
+            "elevation": 0.4,
+            "floors": 1,
+            "steps": 100,
+            "distance": 1.8,
+            "minutesAsleep": 40,
+            "minutesAwake": 300,
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?startdate=:stardate&enddate=:enddate", //link ai campionamenti delle hue filtrati per un intervallo di date
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples?startdate=:stardate&enddate=:enddate", //link ai campionamenti del sensore filtrati per un intervallo di date
+            "rel": "patient/measures/sensor/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*****************************************************************************************************************************************************************************/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/fitbit/total?date=:date" // Resoconto giornaliero del fitbit in una determinata data
+
+{
+    "total": {
+        "patient_id": 1,
+        "avg_heartbeats": 80,
+        "calories": 200,
+        "elevation": 0.4,
+        "floors": 1,
+        "steps": 100,
+        "distance": 1.8,
+        "minutesAsleep": 40,
+        "minutesAwake": 300,
+    },
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/total?date=:date", //link al totale giornaliero del fitbit
+            "rel": "patient/measures/hue/total",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor/total?date=:date", //link al totale giornaliero del sensore
+            "rel": "patient/measures/sensor/total",
+            "type": "GET"
+        },
+    ]
+}

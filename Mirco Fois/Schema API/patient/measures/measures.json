@@ -1,0 +1,19 @@
+GET "http://example.com/api/v2/patients/:patient_id/measures"
+
+[
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit",
+        "rel": "patient/measures/fitbit",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/measures/hue",
+        "rel": "patient/measures/hue",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/measures/sensor",
+        "rel": "patient/measures/sensor",
+        "type": "GET"
+    }
+]

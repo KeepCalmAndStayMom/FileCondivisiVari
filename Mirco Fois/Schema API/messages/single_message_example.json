@@ -1,0 +1,24 @@
+GET medic "http://example.com/api/v2/medics/:medic/messages/sent?timedate=:timedate&patient_id=:patient_id" //singolo messaggio inviato dal medico
+GET medic "http://example.com/api/v2/medics/:medic/messages/received?timedate=:timedate&patient_id=:patient_id" //singolo messaggio ricevuto dal medico
+GET patient "http://example.com/api/v2/patients/:patient_id/messages/sent?timedate=:timedate&medic_id=:medic_id" //singolo messaggio inviato dalla paziente
+GET patient "http://example.com/api/v2/patients/:patient_id/messages/received?timedate=:timedate&medic_id=:medic_id" //singolo messaggio ricevuto dalla paziente
+
+//esempio rappresentazione di un messaggio
+{
+    "patient_id": 1,
+    "medic_id":1,
+    "timedate": "YYYY-MM-DD HH:mm:SS",
+    "text": "text message",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati della paziente
+            "rel": "patient",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id", //link ai dati del medico
+            "rel": "patient",
+            "type": "GET"
+        }
+    ]
+}

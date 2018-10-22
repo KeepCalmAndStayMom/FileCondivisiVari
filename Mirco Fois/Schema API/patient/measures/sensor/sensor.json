@@ -1,0 +1,159 @@
+GET "http://example.com/api/v2/patients/:patient_id/measures/sensor/samples" // Elenco di tutti i rilevamenti del sensore
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples", //link ai campionamenti del fitbit
+            "rel": "patient/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples", //link ai campionamenti delle hue
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?date=:date" // Elenco rilevamenti sensore in una determinata data
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?date=:date", //link ai campionamenti del fitbit filtrati per data
+            "rel": "patient/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?date=:date", //link ai campionamenti delle hue filtrati per data
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?stardate=:startdate&enddate=:enddate" // Elenco rilevamenti delle hue in un dato intervallo di tempo
+
+{
+    "measures": [
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        {
+            "timedate": "YYYY-MM-DD HH:mm:SS",
+            "temperature": 24,
+            "luminescence": 553,
+            "humidity": 60
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/samples?stardate=:startdate&enddate=:enddate", //link ai campionamenti del fitbit filtrati per un intervallo di date
+            "rel": "patient/measures/fitbit/samples",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/samples?stardate=:startdate&enddate=:enddate", //link ai campionamenti delle hue filtrati per un intervallo di date
+            "rel": "patient/measures/hue/samples",
+            "type": "GET"
+        },
+    ]
+}
+
+/*****************************************************************************************************************************************************************************/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/total?date=:date" // Media giornaliera dati sensore in una determinata data
+
+{
+    "total": {
+        "avgtemperature": 25,
+        "avgluminescence": 550,
+        "avghumidity": 60
+    },
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/total?date=:date", //link al totale del fitbit in una specifica data
+            "rel": "patient/measures/fitbit/total",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/total?date=:date", //link al totale delle hue in una specifica data
+            "rel": "patient/measures/hue/total",
+            "type": "GET"
+        }
+    ]
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------*/
+
+GET "http://example.com/api/v2/patients/:patient_id/measures/hue/total?startdate=:stardate&enddate=:enddate" // Media dati sensore in un dato intervallo di tempo
+
+{
+    "total": {
+        "avgtemperature": 25,
+        "avgluminescence": 550,
+        "avghumidity": 60
+    },
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/fitbit/total?startdate=:stardate&enddate=:enddate", //link al totale del fitbit in un intervallo di date
+            "rel": "patient/measures/fitbit/total",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/measures/hue/total?startdate=:stardate&enddate=:enddate", //link al totale delle hue in un intervallo di date
+            "rel": "patient/measures/hue/total",
+            "type": "GET"
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+GET "http://example.com/api/v2/medics/:medic_id" // Restituisce i dati di un medico
+
+//esempio dei dati di un medico
+{
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "age": 50,
+    "phone": "42340259238",
+    "specialization": "test",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/patients", //link ai pazienti del medico
+            "rel": "patients",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks", //link ai task assegnati del medico
+            "rel": "tasks",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/messages", //link ai messaggi del medico
+            "rel": "messages",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id", //link per la modifica dei dati del medico
+            "rel": "medic",
+            "type": "PUT"
+        }
+    ]
+}
+
+
+
+GET "http://example.com/api/v2/medics/:medic_id/patients", //elenco pazienti di un medico
+
+//esempio elenco dei pazienti di un medico
+[
+    {
+        "patient_id": 1,
+        "nome": "test",
+        "surname": "test",
+        "link": {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati del paziente
+            "rel": "self",
+            "type": "GET"
+        }
+    },
+    {
+        "patient_id": 1,
+        "nome": "test",
+        "surname": "test",
+        "link": {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati del paziente
+            "rel": "self",
+            "type": "GET"
+        }
+    },
+    .
+    .
+    .
+    .
+    .
+]
+
+
+
+POST admin "http://example.com/api/v2/medics" //aggiunta di un nuovo medico al database
+
+//esempio per l'aggiunta di un medico al database
+{
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "age": 50,
+    "phone": "42340259238",
+    "specialization": "test"
+}
+
+
+DELETE admin "http://example.com/api/v2/medics/medic_id" //Eliminazione di un medico dal database
+
+
+PUT "http://example.com/api/v2/medics/:medic_id" //Modifica dei dati di un medico
+
+//esempio per la modifica dei dati di un medico
+{
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "age": 50,
+    "phone": "42340259238",
+    "specialization": "test",
+}

@@ -1,0 +1,87 @@
+GET medic "http://example.com/api/v2/patients/:patient_id/tasks"
+
+[
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/tasks/generic", //link ai task generici della paziente
+        "rel": "patient/tasks/generic",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/tasks/activities", //link alle attività della paziente
+        "rel": "patient/tasks/activities",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/patients/:patient_id/tasks/diets", //lin alle diete della paziente
+        "rel": "patient/tasks/diets",
+        "type": "GET"
+    }
+]
+
+/*----------------------------------------------------------*/
+
+GET patient "http://example.com/api/v2/medics/:medic_id/tasks"
+
+[
+    {
+        "href": "http://example.com/api/v2/medics/:medic_id/tasks/general", //link ai task generali assegnati dal medico
+        "rel": "medic/tasks/generic",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/medics/:medic_id/tasks/activities", //link alle attività assegnate dal medico
+        "rel": "medic/tasks/activities",
+        "type": "GET"
+    },
+    {
+        "href": "http://example.com/api/v2/medics/:medic_id/tasks/diets", //link alle diete assegnate dal medico
+        "rel": "medic/tasks/diets",
+        "type": "GET"
+    }
+]
+
+/**************************************************************************************************/
+
+DELETE medic "http://example.com/api/v2/medics/:medic_id/tasks/general/:task_id" //eliminazione di un task generale
+DELETE medic "http://example.com/api/v2/medics/:medic_id/tasks/activities/:task_id" //eliminazione di un'attività
+DELETE medic "http://example.com/api/v2/medics/:medic_id/tasks/diets/:task_id" //eliminazione di una dieta
+
+
+PUT medic "http://example.com/api/v2/medics/:medic_id/tasks/general/:task_id" //modifica di un task generale per il medico
+PUT medic "http://example.com/api/v2/medics/:medic_id/tasks/activities/:task_id" //modifica di un'attività per il medico
+PUT medic "http://example.com/api/v2/medics/:medic_id/tasks/diets/:task_id" //modifica di una dieta per il medico
+
+//esempio dei dati di un task che il medico può modificare
+{
+    "category": "test",
+    "description": "test",
+    "date": "YYYY-MM-DD",
+    "starting_program": "true|false",
+    "executed": "true|false"
+}
+
+
+PUT patient "http://example.com/api/v2/patients/:patient_id/tasks/general/:task_id" //modifica di un task generale per la paziente
+PUT patient "http://example.com/api/v2/patients/:patient_id/tasks/activities/:task_id" //modifica di un'attività per la paziente
+PUT patient "http://example.com/api/v2/patients/:patient_id/tasks/diets/:task_id" //modifica di una dieta per la paziente
+
+//esempio dei dati di un task che la paziente può modificare
+{
+    "executed": "true|false"
+}
+
+
+
+POST medic "http://example.com/api/v2/medics/:medic_id/tasks/general" //aggiunta di un task generale
+POST medic "http://example.com/api/v2/medics/:medic_id/tasks/activities" //aggiunta di un'attività
+POST medic "http://example.com/api/v2/medics/:medic_id/tasks/diets" //aggiunta di una dieta
+
+//esempio body per l'inserimento di un nuovo task nel database
+{
+    "patient_id": 1,
+    "category": "test",
+    "description": "test",
+    "date": "YYYY-MM-DD",
+    "starting_program": "true|false",
+    "executed": "true|false"
+}

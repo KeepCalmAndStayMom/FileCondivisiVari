@@ -1,0 +1,104 @@
+GET "http://example.com/api/v2/patients/:patient_id" // Restituisce i dati del paziente
+
+//esempio risposta dati paziente
+{
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "age": 30,
+    "home_address": "test",
+    "hospital_address": "test",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks",
+            "rel": "patient/tasks",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/weight",
+            "rel": "patient/weight",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/initial_data",
+            "rel": "patient/initial_data",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/medics",
+            "rel": "patient/medics",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/messages",
+            "rel": "patient/messages",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id",
+            "rel": "patient/messages",
+            "type": "PUT"
+        }
+    ]
+}
+
+
+
+GET "http://example.com/api/v2/patients/:patient_id/medics" //Restituisce la lista dei medici di una paziente
+
+//esempio risposta lista medici
+[
+    {
+        "medic_id": 1,
+        "name": "test",
+        "surname": "test",
+        "link": {
+            "href": "http://example.com/medics/:medic_id",
+            "rel": "self",
+            "type": "GET"
+        }
+    },
+    {
+        "medic_id": 2,
+        "name": "test",
+        "surname": "test",
+        "link": {
+            "href": "http://example.com/medics/:medic_id",
+            "rel": "self",
+            "type": "GET"
+        }
+    }
+    .
+    .
+    .
+    .
+]
+
+
+
+DELETE admin "http://example.com/api/v2/patients/:patient_id" //eliminazione di una paziente dal database
+
+
+
+POST admin "http://example.com/api/v2/patients" // aggiunta di una paziente al database
+
+//esempio aggiunta di una paziente al database
+{
+    "id": 1,
+    "name": "test",
+    "surname": "test",
+    "age": 30,
+    "home_address": "test",
+    "hospital_address": "test",
+}
+
+PUT "http://example.com/api/v2/patients/:patient_id" //modifica dati di una paziente
+
+//esempio modifica dei dati del paziente
+{
+    "name": "test",
+    "surname": "test",
+    "age": 30,
+    "home_address": "test",
+    "hospital_address": "test",
+}

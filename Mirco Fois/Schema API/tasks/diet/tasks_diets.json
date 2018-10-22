@@ -1,0 +1,136 @@
+GET patient "http://example.com/api/v2/patients/:patient_id/tasks/diets" // Restituisce le diete per la paziente
+    parametri:  executed=:true|:false, //filtra le diete effettuate o non
+                (date=:date) oppure (startdate=:startdate&enddate=:enddate) // filtra le diete di una determinata data oppure di un intervallo di date
+                medic_id=:medic_id // filtra le diete per medico
+
+{
+    "diets": [
+        {
+            "task_id": 1,
+            "medic_id":1,
+            "category": "test",
+            "description": "test",
+            "date": "YYYY-MM-DD",
+            "starting_program": "true|false",
+            "executed": "true|false",
+            "link": {
+                "href": "http://example.com/medics/:medics/tasks/diets/:tasks_id", //link a questo task
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        {
+            "task_id": 2,
+            "medic_id":2,
+            "category": "test",
+            "description": "test",
+            "date": "YYYY-MM-DD",
+            "starting_program": "true|false",
+            "executed": "true|false",
+            "link": {
+                "href": "http://example.com/medics/:medics/tasks/diets/:tasks_id", //link a questo task
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks/diets?executed=:true", //link alle diete eseguite dalla paziente
+            "rel": "self",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks/diets?executed=:false", //link alle diete non eseguite dalla paziente
+            "rel": "self",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/patient_id/tasks/general", //link ai task generali della paziente
+            "rel": "patient/tasks/general",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks/activities", //link alle attività della paziente
+            "rel": "patient/tasks/activities",
+            "type": "GET"
+        }
+    ]
+}
+
+/*********************************************************************************************************************/
+
+GET medic "http://example.com/api/v2/medics/:medic_id/tasks/diets" // Restituisce le diete per il medico
+    parametri:  executed=:true|:false, //filtra le diete effettuate o non
+                (date=:date) oppure (startdate=:startdate&enddate=:enddate) // filtra le diete di una determinata data oppure di un intervallo di date
+                patient=:patient_id //filtra le diete di una determinata paziente
+
+{
+    "diets": [
+        {
+            "task_id": 3,
+            "patient_id":1,
+            "category": "test",
+            "description": "test",
+            "date": "YYYY-MM-DD",
+            "starting_program": "true|false",
+            "executed": "true|false",
+            "link": {
+                "href": "http://example.com/medics/:medics/tasks/diets/:tasks_id", //link a questo task
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        {
+            "task_id": 4,
+            "patient_id":2,
+            "category": "test",
+            "description": "test",
+            "date": "YYYY-MM-DD",
+            "starting_program": "true|false",
+            "executed": "true|false",
+            "link": {
+                "href": "http://example.com/medics/:medics/tasks/diets/:tasks_id", //link a questo task
+                "rel": "self",
+                "type": "GET"
+            }
+        },
+        .
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/diets?executed=:true", //link alle diete eseguite assegnate dal medico
+            "rel": "self",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/diets?executed=:false", //link alle diete non eseguite assegnate dal medico
+            "rel": "self",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/generic", //lin ai task generici assegnati dal medico
+            "rel": "medic/tasks/generic",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/activities", //link alle attività assegnate dal medico
+            "rel": "medic/tasks/activities",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/diets", //link per l'aggiunta di una dieta
+            "rel": "self",
+            "type": "POST"
+        }
+    ]
+}

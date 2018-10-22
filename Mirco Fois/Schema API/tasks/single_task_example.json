@@ -1,0 +1,81 @@
+//Esempio di rappresentazione di un task generale che è lo stesso sia per le attività che per le diete, cambiano solo i nomi negli url
+
+
+GET medic "http://example.com/api/v2/medics/:medic_id/tasks/general/:task_id" // Seleziona un task generale in base al suo id
+
+//Rappresentazione di un task per il medico
+{
+    "task_id": 1,
+    "patient_id": 1,
+    "medic_id":1,
+    "category": "test",
+    "description": "test",
+    "date": "YYYY-MM-DD",
+    "starting_program": "true|false",
+    "executed": "true|false",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/general/:task_id", //link alla modifica di questo task
+            "rel": "self",
+            "type": "PUT"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/general/:task_id", //link per eliminare questo task
+            "rel": "self",
+            "type": "DELETE"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id/tasks/general", // link ai task generali
+            "rel": "medic/tasks/general",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id", //link ai dati del medico
+            "rel": "medic",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati della paziente
+            "rel": "patient",
+            "type": "GET"
+        },
+    ]
+}
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+
+GET patient "http://example.com/api/v2/patients/:patient_id/tasks/general/:task_id" // Seleziona un task generale in base al suo id
+
+//Rappresentazione di un task per la paziente
+{
+    "task_id": 1,
+    "patient_id": 1,
+    "medic_id":1,
+    "category": "test",
+    "description": "test",
+    "date": "YYYY-MM-DD",
+    "starting_program": "true|false",
+    "executed": "true|false",
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks/general/:task_id", //link per la modifica di questo task
+            "rel": "self",
+            "type": "PUT"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/tasks/general", //link ai task generali
+            "rel": "patient/tasks/general",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/medics/:medic_id", //link ai dati del medico
+            "rel": "medic",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati della paziente
+            "rel": "patient",
+            "type": "GET"
+        },
+    ]
+}

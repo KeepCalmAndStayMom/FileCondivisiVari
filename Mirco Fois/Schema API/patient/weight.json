@@ -1,0 +1,82 @@
+GET "http://example.com/api/v2/patients/:patient_id/weight" //restituisce i pesi della paziente
+    parametri:  (date=:date) oppure (startdate=:startdate&enddate=:enddate) //filtra per singola data oppure per un intervallo di date
+
+//esempio pesi per un intervallo di date o per tutto l'arco del tempo
+
+{
+    "weights": [
+        {
+            "patient_id": 1,
+            "date": "YYYY-MM-DD",
+            "weight": 60,
+            "link": {
+                "href": "http://example.com/api/v2/patients/:patient_id/weight?date=:date", //link al singolo dato del peso
+                "rel": "patient/weight",
+                "type": "GET"
+            }
+        },
+        {
+            "patient_id": 1,
+            "date": "YYYY-MM-DD",
+            "weight": 60,
+            "link": {
+                "href": "http://example.com/api/v2/patients/:patient_id/weight?date=:date", //link al singolo dato del peso
+                "rel": "patient/weight",
+                "type": "GET"
+            }
+        },
+        .
+        .
+        .
+        .
+    ],
+    "links": [
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati del paziente
+            "rel": "patient",
+            "type": "GET"
+        },
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/weight", //link per la modifica del peso (valido se il peso è l'ultimo inserito dalla paziente)
+            "rel": "patient/weight",
+            "type": "PUT"
+        }
+        {
+            "href": "http://example.com/api/v2/patients/:patient_id/weight", //link per l'aggiunta di un nuovo peso
+            "rel": "patient/weight",
+            "type": "POST"
+        }
+    ]
+}
+
+
+//esempio rappresentazione del singolo peso
+{
+    "date": "YYYY-MM-DD",
+    "weight": 60,
+    "link": {
+        "href": "http://example.com/api/v2/patients/:patient_id", //link ai dati del paziente
+        "rel": "patient",
+        "type": "GET"
+    }
+}
+
+
+
+PUT "http://example.com/api/v2/patients/:patient_id/weight" //modifica peso valida solo per l'ultimo peso inserito dalla paziente
+    parametri:  (date=:date) //Filtra per singola data
+
+//esempio body per la modifica di un dato peso
+{
+    "weight": 60,
+}
+
+
+
+POST "http://example.com/api/v2/patients/:patient_id/weight" //aggiunta di un nuovo peso al database
+
+//esempio body per l'aggiunta di un nuovo peso
+{
+    "date": "YYYY-MM-DD",
+    "weight": 60,
+}
