@@ -15,7 +15,7 @@ GET "http://example.com/api/v2/patients/:patient_id/initial_data" //dati inizial
     }
 }
 
-POST admin "http://example.com/api/v2/patients/:patient_id/login_data" //aggiunta dei dati iniziali di gravidanza al database
+POST admin "http://example.com/api/v2/patients/:patient_id/initial_data" //aggiunta dei dati iniziali di gravidanza al database
 
 //esempio aggiunta dati iniziali di gravidanza al database
 {
@@ -26,7 +26,7 @@ POST admin "http://example.com/api/v2/patients/:patient_id/login_data" //aggiunt
     "twin": "true|false",
 }
 
-PUT medic "http://example.com/api/v2/patients/:patient_id" //modifica dati iniziali di gravidanza
+PUT medic "http://example.com/api/v2/patients/:patient_id/initial_data" //modifica dati iniziali di gravidanza
 
 //esempio modifica dati iniziali di gravidanza
 {
